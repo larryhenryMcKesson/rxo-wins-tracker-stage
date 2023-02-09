@@ -1,0 +1,1170 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/1/2020 2:01:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="A5CD9412BDC"
+  DTS:CreatorName="NAMCK\eth3kcu"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{0277426D-4505-4DA7-8535-04FFEFBDA8F5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="RXO_VALIDATION_REPORT_SFDC_UPLOAD"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{41FDCA20-FA5D-442D-8433-40049C59D052}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{77A53CA7-D3E9-46B4-B285-422ED656CFFD}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MCKSQL75;Initial Catalog=GX_RPT;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{215FEEB7-EE37-4DDF-80F7-EE7C46447DF0}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ddcf2025\multisrc$\Analytics\Retail Customer Solutions\!Collaboration\RXO_Projects\RxOwn Wins STAGING SFDC.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{F2B924A7-E086-4683-8F31-5BC82A1ED37D}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ddcf2025\multisrc$\Analytics\Retail Customer Solutions\!Collaboration\RXO_Projects\RxOwn Wins STAGING SFDC.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{A3017260-0DF8-4220-A1A0-0BEFD9BE38D6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - RXO_VALIDATION_REPORT_SFDC"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[RXO_VALIDATION_REPORT_SFDC]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Close Date]"
+                      cachedDataType="date"
+                      cachedName="Close Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Close Date]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Close Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[RxOwnership Win Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RxOwnership Win Type"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Win Type]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Win Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Stage]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Stage"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Stage]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Stage]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Opportunity ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Opportunity ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity ID]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Servicing DC Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Servicing DC Region"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Servicing DC Region]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Servicing DC Region]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[RxOwnership DC Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RxOwnership DC Region"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership DC Region]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership DC Region]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[RxOwnership Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RxOwnership Region"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Region]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Region]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[National Group Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="National Group Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[National Group Name]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[National Group Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Expected Annual Deal Value]"
+                      cachedDataType="r8"
+                      cachedName="Expected Annual Deal Value"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Expected Annual Deal Value]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Expected Annual Deal Value]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Estimated EBIT%]"
+                      cachedDataType="r8"
+                      cachedName="Estimated EBIT%"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Estimated EBIT%]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Estimated EBIT%]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Health Mart]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Health Mart"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Health Mart]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Health Mart]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Account Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Account Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Account Number]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Account Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Primary Account Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Primary Account Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Primary Account Number]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Primary Account Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Funnel Comments]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Funnel Comments"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Funnel Comments]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Funnel Comments]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Opportunity Owner: Full Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Opportunity Owner: Full Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Owner: Full Name]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Full Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Opportunity Owner: Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Opportunity Owner: Region"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Owner: Region]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Region]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Opportunity Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Opportunity Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Name]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Parent VPGM]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Parent VPGM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Parent VPGM]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPGM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Parent VPS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Parent VPS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Parent VPS]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[No of Seller Locations]"
+                      cachedDataType="r8"
+                      cachedName="No of Seller Locations"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[No of Seller Locations]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[No of Seller Locations]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[DC Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DC Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[DC Number]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[DC Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].Columns[RxOwnership Seller: Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RxOwnership Seller: Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Seller: Name*]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Seller: Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Close Date]"
+                      dataType="dbTimeStamp"
+                      name="Close Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Win Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Win Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Stage]"
+                      dataType="wstr"
+                      length="255"
+                      name="Stage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Servicing DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Servicing DC Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership DC Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[RxOwnership Seller: Name*]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Seller: Name*" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[National Group Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="National Group Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[No of Seller Locations]"
+                      dataType="r8"
+                      name="No of Seller Locations" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Expected Annual Deal Value]"
+                      dataType="r8"
+                      name="Expected Annual Deal Value" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Estimated EBIT%]"
+                      dataType="r8"
+                      name="Estimated EBIT%" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Health Mart]"
+                      dataType="wstr"
+                      length="255"
+                      name="Health Mart" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Primary Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Primary Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Funnel Comments]"
+                      dataType="wstr"
+                      length="255"
+                      name="Funnel Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Owner: Full Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Owner: Full Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Owner: Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Owner: Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Opportunity Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Parent VPGM]"
+                      dataType="wstr"
+                      length="255"
+                      name="Parent VPGM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[Parent VPS]"
+                      dataType="wstr"
+                      length="255"
+                      name="Parent VPS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[DC Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="DC Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input].ExternalColumns[NCPDP/NABP]"
+                      dataType="wstr"
+                      length="255"
+                      name="NCPDP/NABP" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - report1591028982967$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - report1591028982967$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Data$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - report1591028982967$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Close Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Close Date]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Close Date]"
+                      name="Close Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Win Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Win Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Win Type]"
+                      name="RxOwnership Win Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Stage]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Stage]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Stage]"
+                      name="Stage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity ID]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity ID]"
+                      name="Opportunity ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Servicing DC Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Servicing DC Region]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Servicing DC Region]"
+                      name="Servicing DC Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership DC Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership DC Region]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership DC Region]"
+                      name="RxOwnership DC Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Region]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Region]"
+                      name="RxOwnership Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[National Group Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[National Group Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[National Group Name]"
+                      name="National Group Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Expected Annual Deal Value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Expected Annual Deal Value]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Expected Annual Deal Value]"
+                      name="Expected Annual Deal Value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Estimated EBIT%]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Estimated EBIT%]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Estimated EBIT%]"
+                      name="Estimated EBIT%"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Health Mart]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Health Mart]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Health Mart]"
+                      name="Health Mart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Account Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Account Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Account Number]"
+                      name="Account Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Primary Account Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Primary Account Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Primary Account Number]"
+                      name="Primary Account Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Funnel Comments]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Funnel Comments]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Funnel Comments]"
+                      name="Funnel Comments"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Full Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Owner: Full Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Full Name]"
+                      name="Opportunity Owner: Full Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Owner: Region]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Owner: Region]"
+                      name="Opportunity Owner: Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Opportunity Name]"
+                      name="Opportunity Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPGM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Parent VPGM]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPGM]"
+                      name="Parent VPGM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Parent VPS]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Parent VPS]"
+                      name="Parent VPS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[NCPDP/NABP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[NCPDP/NABP #]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[NCPDP/NABP]"
+                      name="NCPDP/NABP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Seller: Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Seller: Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[RxOwnership Seller: Name]"
+                      name="RxOwnership Seller: Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[DC Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[DC Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[DC Number]"
+                      name="DC Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[No of Seller Locations]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[No of Seller Locations]"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].Columns[No of Seller Locations]"
+                      name="No of Seller Locations"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Close Date]"
+                      dataType="date"
+                      name="Close Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Win Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Win Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Stage]"
+                      dataType="wstr"
+                      length="255"
+                      name="Stage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Servicing DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Servicing DC Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership DC Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[National Group Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="National Group Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Expected Annual Deal Value]"
+                      dataType="r8"
+                      name="Expected Annual Deal Value" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Estimated EBIT%]"
+                      dataType="r8"
+                      name="Estimated EBIT%" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Health Mart]"
+                      dataType="wstr"
+                      length="255"
+                      name="Health Mart" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Primary Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Primary Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Funnel Comments]"
+                      dataType="wstr"
+                      length="255"
+                      name="Funnel Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Owner: Full Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Owner: Full Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Owner: Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Owner: Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Opportunity Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Opportunity Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Parent VPGM]"
+                      dataType="wstr"
+                      length="255"
+                      name="Parent VPGM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Parent VPS]"
+                      dataType="wstr"
+                      length="255"
+                      name="Parent VPS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[NCPDP/NABP #]"
+                      dataType="wstr"
+                      length="255"
+                      name="NCPDP/NABP #" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[RxOwnership Seller: Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="RxOwnership Seller: Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[DC Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="DC Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output].ExternalColumns[No of Seller Locations]"
+                      dataType="r8"
+                      name="No of Seller Locations" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Close Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Close Date]"
+                      name="Close Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Win Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Win Type]"
+                      name="RxOwnership Win Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Stage]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Stage]"
+                      name="Stage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity ID]"
+                      name="Opportunity ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Servicing DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Servicing DC Region]"
+                      name="Servicing DC Region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership DC Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership DC Region]"
+                      name="RxOwnership DC Region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Region]"
+                      name="RxOwnership Region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Seller: Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[RxOwnership Seller: Name]"
+                      name="RxOwnership Seller: Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[DC Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[DC Number]"
+                      name="DC Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[National Group Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[National Group Name]"
+                      name="National Group Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[No of Seller Locations]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[No of Seller Locations]"
+                      name="No of Seller Locations" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Expected Annual Deal Value]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Expected Annual Deal Value]"
+                      name="Expected Annual Deal Value" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Estimated EBIT%]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Estimated EBIT%]"
+                      name="Estimated EBIT%" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Health Mart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Health Mart]"
+                      name="Health Mart" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Account Number]"
+                      name="Account Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Primary Account Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Primary Account Number]"
+                      name="Primary Account Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Funnel Comments]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Funnel Comments]"
+                      name="Funnel Comments" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[NCPDP/NABP #]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[NCPDP/NABP #]"
+                      name="NCPDP/NABP #" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Owner: Full Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Owner: Full Name]"
+                      name="Opportunity Owner: Full Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Owner: Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Owner: Region]"
+                      name="Opportunity Owner: Region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Opportunity Name]"
+                      name="Opportunity Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Parent VPGM]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Parent VPGM]"
+                      name="Parent VPGM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Parent VPS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[Parent VPS]"
+                      name="Parent VPS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - report1591028982967$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E9F026A6-8134-4006-9A1A-2013719B6DC4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{77A53CA7-D3E9-46B4-B285-422ED656CFFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[RXO_VALIDATION_REPORT_SFDC]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{3FD3BFFB-86F7-4EB8-98A1-D84A235766DE\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{16D17ABE-A3E9-451B-A709-8ECCEBDB878A}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{16D17ABE-A3E9-451B-A709-8ECCEBDB878A}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="20.5,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="4.50000000000001,4.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{3FD3BFFB-86F7-4EB8-98A1-D84A235766DE\}]"
+          TopLeft="100,46.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Data Flow Task 1\Source - report1591028982967$"
+          TopLeft="42,5.5" />
+        <NodeLayout
+          Size="305,42"
+          Id="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC"
+          TopLeft="4.50000000000003,106.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Excel Source Output]"
+          TopLeft="157.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - RXO_VALIDATION_REPORT_SFDC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - report1591028982967$">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
